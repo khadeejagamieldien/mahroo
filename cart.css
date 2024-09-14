@@ -1,0 +1,138 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+body {
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f4f4f4;
+    display: flex;
+  flex-direction: column;
+}
+
+h2{
+    font-size: 40px;
+    text-align: center;
+}
+/* Cart Layout */
+#cart-items {
+    margin: 20px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    
+    margin-bottom: 10px;
+    background: #f9f9f9;
+    position: relative;
+}
+
+.cart-item img {
+    max-width: 100px; /* Adjust the size as needed */
+    height: 100%;
+    margin-right: 20px;
+}
+
+.cart-item-content {
+    flex: 1;
+}
+
+.cart-item h3 {
+    margin: 0;
+}
+
+.cart-item p {
+    margin: 5px 0;
+}
+
+.cart-item-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 20px;
+}
+
+.cart-item-buttons  {
+    display: flex;
+    gap: 10px; /* Add some space between the buttons */
+    margin-top: 5px; /* Add some space between the remove button and quantity buttons */
+}
+.quantity {
+    display: none;
+}
+button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: #5e5e5e;
+}
+
+button.decrease {
+    background-color: #333;
+}
+
+button.increase {
+    background-color: #333;
+}
+
+button.decrease:hover {
+    background-color: #c62828;
+}
+
+button.increase:hover {
+    background-color: #388e3c;
+}
+
+button.remove {
+    background-color: #333;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+
+/* Add this CSS to your stylesheet */
+.button-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically if needed */
+    margin-top: 10px; /* Adjust margin as needed */
+    margin-bottom: 40px;
+}
+
+.checkout-btn {
+    background-color: #333; /* Dark background color for the button */
+    color: #fff; /* White text color */
+    border: none; /* Removes the default border */
+    padding: 10px 20px; /* Adds padding inside the button */
+    font-size: 16px; /* Sets the font size of the button text */
+    cursor: pointer; /* Changes the cursor to a pointer on hover */
+    transition: background-color 0.3s; /* Adds a transition effect on hover */
+    border-radius: 4px;
+}
+
+.checkout-btn:hover {
+    background-color: #555; /* Changes background color on hover */
+}
+
+#total-price{
+    margin-left: 20px;
+}
+.checkout-btn:hover,
+.checkout-btn:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.25em);
+}
+.name{display: none;}

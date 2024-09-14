@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="cart.css">
+    <link rel="stylesheet " href="social.css">
+    <link rel="stylesheet" href="loader.css">
+    <link rel="stylesheet" href="header.css">
+</head>
+<body>
+    <header>
+        <div id="loading-overlay">
+            <div class="hourglassBackground">
+              <div class="hourglassContainer">
+                <div class="hourglassCurves"></div>
+                <div class="hourglassCapTop"></div>
+                <div class="hourglassGlassTop"></div>
+                <div class="hourglassSand"></div>
+                <div class="hourglassSandStream"></div>
+                <div class="hourglassCapBottom"></div>
+                <div class="hourglassGlass"></div>
+              </div>
+            </div>
+        </div>
+        <div class="logo">MAHROO</div> 
+        <!-- <div class="search-container">
+          <input type="text" id="search-input" placeholder="Search for products...">
+          <button id="search-button">Search</button>
+        </div> -->
+        <nav>
+          <div class="header4">
+                
+            <ul class="menu4">
+                <li><a class="active" href="index.html"><i
+                            class="fas fa-home"></i> Home</a></li>
+                <li><a href="shop.html"><i class="fas fa-shop"></i>
+                        Shop</a></li>
+                <li><a href="cart.html"><i
+                            class="fas fa-shopping-cart"></i> Cart<span
+                            id="cart-span">0</span></a></li>
+                <li><a href="care.html"><i class="fas fa-user"></i>
+                        Customer Care</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>C A R T</h2>
+        <div class="content">
+            <div id="cart-items">
+                <!-- Cart items are displayed here -->
+            </div>
+        </div>
+        <p id="total-price">Total: 0.00</p>
+        <div class="button-container"> 
+            <a href="payment.html"><button class="checkout-btn">Checkout</button></a>
+         </div>
+       
+    </main>
+    <footer class="section-p1">
+        <div class="cont">
+            <div class="column">
+                <h4>Contact Us</h4>
+                <p><strong>Whatsapp: </strong>+27 79 479 5961</p>
+                <p><strong>Email: </strong>mahroofashions@gmail.com</p>
+                <p><strong>Hours: </strong>10:00 - 16:00, Mon - Fri</p>
+            </div>
+            <div class="column">
+                <ul>
+                    <li>
+                      <a class="facebook" href="#">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="whatsapp" href="#">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="instagram" href="#">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                  </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024, Mahroo</p>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
+    <script src="cart2.js"></script>
+    <script src="price.js"></script>
+    <script src="loader.js"></script>
+</body>
+</html>

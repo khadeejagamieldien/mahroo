@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet " href="social.css">
+    <link rel="stylesheet" href="loader.css">
+    <link rel="stylesheet" href="header.css">
+    <title>Inventory Management</title>
+    <style>
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            display: flex;
+            width: 80%;
+            max-width: 1200px;
+            margin: 0 auto;
+            justify-content: center;
+            
+        }
+
+        .sidebar {
+            width: 200px;
+            padding-right: 20px;
+        }
+
+        .categories a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .categories {
+            list-style: none;
+            padding: 0;
+        }
+
+        .categories li {
+            margin-bottom: 10px;
+        }
+
+        .main-content {
+            flex: 1;
+        }
+
+        .currency-select, .sort-select {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        select {
+            font-size: 1rem;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-left: 750px;
+        }
+
+        #products {
+            display: flex;
+            flex-wrap: wrap;
+            
+        }
+
+        .product a {
+            text-decoration: none;
+        }
+
+        .product {
+            width: 200px;
+            margin-right: 40px;
+            white-space: normal;
+            border-radius: 8px;
+            text-align: center;
+            padding: 12px;
+            margin-bottom: 20px;
+            display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+        }
+
+        h2 {
+            font-size: 40px;
+            text-align: center;
+        }
+
+        .product h2 {
+            margin: 0;
+            font-size: 16px;
+            text-align: center;
+            color: #333;
+        }
+
+        .product img {
+            width: 250px;
+            height: 330px;
+        }
+
+        .product p {
+            margin: 0;
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .product button {
+            background-color: #333;
+            color: white;
+            height: 40px;
+            width: 90px;
+        }
+
+        #search-button {
+            background-color: #333;
+            color: white;
+            box-shadow: none;
+            border: none;
+        }
+
+        button {
+            border-radius: 4px;
+        }
+
+        /* Center the product text */
+        .product h2, .product p {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="loading-overlay">
+            <div class="hourglassBackground">
+              <div class="hourglassContainer">
+                <div class="hourglassCurves"></div>
+                <div class="hourglassCapTop"></div>
+                <div class="hourglassGlassTop"></div>
+                <div class="hourglassSand"></div>
+                <div class="hourglassSandStream"></div>
+                <div class="hourglassCapBottom"></div>
+                <div class="hourglassGlass"></div>
+              </div>
+            </div>
+        </div>
+        <div class="logo">MAHROO</div> 
+        <!-- <div class="search-container">
+          <input type="text" id="search-input" placeholder="Search for products...">
+          <button id="search-button">Search</button>
+        </div> -->
+        <nav>
+            <div class="header4">
+                <ul class="menu4">
+                    <li><a class="active" href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="shop.html"><i class="fas fa-shop"></i> Shop</a></li>
+                    <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart<span id="cart-span">0</span></a></li>
+                    <li><a href="care.html"><i class="fas fa-user"></i> Customer Care</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <h2>S H O P</h2>
+        <div class="container">
+            <div class="sidebar">
+                <h3>Categories</h3>
+                <ul class="categories">
+                    <li><a href="#" class="category-link" data-category="all">All</a></li>
+                    <li><a href="#" class="category-link" data-category="abayas">Abayas</a></li>
+                    <li><a href="#" class="category-link" data-category="dresses">Dresses</a></li>
+                    <li><a href="#" class="category-link" data-category="skirts">Skirts</a></li>
+                    <li><a href="#" class="category-link" data-category="scarves">Scarves</a></li>
+                    <li><a href="#" class="category-link" data-category="accessories">Accessories</a></li>
+                </ul>
+            </div>
+            <div class="main-content">
+                <div class="sort-select">
+                    <select id="sort-select">
+                        <option value="default">Sort By</option>
+                        <option value="price-asc">Price: Low to High</option>
+                        <option value="price-desc">Price: High to Low</option>
+                        <option value="name-asc">Name: A to Z</option>
+                        <option value="name-desc">Name: Z to A</option>
+                    </select>
+                </div>
+                <div id="products"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="section-p1">
+        <div class="cont">
+            <div class="column">
+                <h4>Contact Us</h4>
+                <p><strong>Whatsapp: </strong>+27 79 479 5961</p>
+                <p><strong>Email: </strong>mahroofashions@gmail.com</p>
+                <p><strong>Hours: </strong>10:00 - 16:00, Mon - Fri</p>
+            </div>
+            <div class="column">
+                <ul>
+                    <li>
+                      <a class="facebook" href="#">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="whatsapp" href="#">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="instagram" href="#">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                  </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024, Mahroo</p>
+        </div>
+    </footer>
+
+    <script src="cart.js"></script>
+    <!-- Load Contentful SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
+    <script>
+        // Initialize Contentful client
+        const client = contentful.createClient({
+            space: 'ht78ljur62hr', // Replace with your Space ID
+            accessToken: '7JHGTqfyep0EfTv7a33h1E4nFpqoifkRsRHJC-kfta8' // Replace with your Access Token
+        });
+
+        function formatCurrency(price, currencyCode = 'ZAR') {
+            const formatter = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: currencyCode,
+            });
+            let formattedPrice = formatter.format(price);
+            
+            if (currencyCode === 'ZAR') {
+                formattedPrice = formattedPrice.replace('ZAR', 'R');
+            }
+
+            return formattedPrice;
+        }
+
+        // Fetch and render products
+        function fetchProducts(sortBy = 'default', category = 'all') {
+            let contentTypes = ['product'];
+
+            if (category === 'abayas') {
+                contentTypes = ['abaya']; // Specify content type for 'abayas' category
+            } else if (category === 'all') {
+                contentTypes = ['product', 'abaya']; // Fetch both content types for 'all' category
+            }
+
+            Promise.all(
+                contentTypes.map(contentType => client.getEntries({ content_type: contentType }))
+            ).then(responses => {
+                let products = responses.flatMap(response => response.items);
+
+                // Filter by category if necessary (excluding 'all' and 'abayas' since 'abayas' is handled by content type)
+                if (category !== 'all' && category !== 'abayas') {
+                    products = products.filter(product => product.fields.category && product.fields.category.toLowerCase() === category.toLowerCase());
+                }
+
+                // Sort products
+                if (sortBy === 'price-asc') {
+                    products.sort((a, b) => a.fields.price - b.fields.price);
+                } else if (sortBy === 'price-desc') {
+                    products.sort((a, b) => b.fields.price - a.fields.price);
+                } else if (sortBy === 'name-asc') {
+                    products.sort((a, b) => a.fields.name.localeCompare(b.fields.name));
+                } else if (sortBy === 'name-desc') {
+                    products.sort((a, b) => b.fields.name.localeCompare(a.fields.name));
+                }
+
+                const productsContainer = document.getElementById('products');
+                productsContainer.innerHTML = '';
+
+                if (products.length === 0) {
+                    productsContainer.innerHTML = 'No products found.';
+                } else {
+                    products.forEach(product => {
+                        const productData = product.fields;
+
+                        // Access the first image in the array
+                        const productImageArray = productData.productImage;
+                        const imageUrl = productImageArray && productImageArray.length > 0 
+                            ? productImageArray[0].fields.file.url 
+                            : null;
+
+                        // Full URL for image
+                        const fullImageUrl = imageUrl ? `https:${imageUrl}` : null;
+                        const price = formatCurrency(productData.price, 'ZAR'); // Adjust currency code as needed
+
+                        // Safely handle missing fields
+                        const name = productData.name || 'No name available';
+                        const description = productData.description || 'No description available';
+
+                        const productElement = document.createElement('div');
+                        productElement.classList.add('product');
+
+                        // Insert image URL into HTML
+                        productElement.innerHTML = `
+                            <a href="product-page.html?id=${product.sys.id}"> <!-- Link to the product page -->
+                                ${fullImageUrl ? `<img src="${fullImageUrl}" alt="${name}">` : '<p>No image available</p>'}
+                                <h2>${name}</h2>
+                                <p> ${price}</p>
+                            </a>
+                        `;
+
+                        productsContainer.appendChild(productElement);
+                    });
+                }
+            }).catch(err => {
+                console.error('Error fetching entries:', err);
+                document.getElementById('products').innerHTML = 'Error loading products.';
+            });
+        }
+
+        // Event listeners for sorting and filtering
+        document.getElementById('sort-select').addEventListener('change', (event) => {
+            const sortBy = event.target.value;
+            currentSort = sortBy;
+            fetchProducts(currentSort, currentCategory);
+        });
+
+        document.querySelectorAll('.category-link').forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                const category = event.target.dataset.category;
+                currentCategory = category;
+                fetchProducts(currentSort, category);
+            });
+        });
+
+        let currentSort = 'default';
+        let currentCategory = 'all';
+        fetchProducts();
+    </script>
+    <script src="loader.js"></script>
+</body>
+</html>

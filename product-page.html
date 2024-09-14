@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <link rel="stylesheet" href="social.css" >
+    <link rel="stylesheet" href="loader.css" >
+    <link rel="stylesheet" href="header.css" >
+    <title>Product Details</title>
+    <style>
+      @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css");
+
+      body {
+        font-family: "Times New Roman", Times, serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        color: #333;
+        background-color: #f4f4f4;
+        flex-direction: column;
+      }
+
+      .product-container {
+        display: flex;
+        flex-direction: column;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .product-details img {
+        height: 600px;
+        width: 300px;
+      }
+
+      .slider-container {
+        display: flex;
+        align-items: flex-start;
+        gap: 20px; /* Space between slider and details */
+        width: 75%;
+        margin: 20px auto;
+      }
+
+      .slider {
+        position: relative;
+        flex: 1; /* Slider takes up available space */
+        overflow: hidden;
+        width: 100%;
+      }
+
+      .slides {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+      }
+
+      .slide {
+        min-width: 100%;
+        box-sizing: border-box;
+      }
+
+      .slide img {
+        width: 100%;
+        display: block;
+      }
+
+      .product-details button {
+       background-color: #333;
+       color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        z-index: 1000;
+        font-size: 18px;
+        margin-top: 20px; /* Space above button */
+      }
+
+      .prev {
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        cursor: pointer;
+      }
+
+      .next {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        cursor: pointer;
+      }
+
+      .prev:hover, .next:hover{
+        transition: background-color 0.3s;
+        box-shadow: 1px 1px 2rem rgba(0,0,0,.3);
+      }
+    
+
+      .product-details {
+        flex: 1; /* Details take up available space */
+        max-width: 400px; /* Maximum width for details */
+        padding: 20px;
+        background: #f4f4f4;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .product-details h2 {
+        margin-top: 0;
+        font-size: 40px;
+      }
+
+      .product-details p {
+        margin: 10px 0;
+      }
+
+      .heading h2 {
+        margin-bottom: 50px;
+      }
+
+      .add-to-cart {
+        border-radius: 25px;
+        cursor: pointer;
+        height: 50px;
+        width: 200px;
+        display: block;
+        transition: transform 0.1s, background-color 0.3s;
+      }
+
+      .add-to-cart:hover {
+        transform: scale(1.1);
+        background-color: #5e5e5e;
+      }
+
+      .add-to-cart i {
+        font-size: 15px;
+        margin-right: 10px; /* Space between icon and text */
+      }
+
+      #size-select,
+      #color-select {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        margin-right: 10px;
+      }
+
+      .decrease,
+      .increase {
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div id="loading-overlay">
+        <div class="hourglassBackground">
+          <div class="hourglassContainer">
+            <div class="hourglassCurves"></div>
+            <div class="hourglassCapTop"></div>
+            <div class="hourglassGlassTop"></div>
+            <div class="hourglassSand"></div>
+            <div class="hourglassSandStream"></div>
+            <div class="hourglassCapBottom"></div>
+            <div class="hourglassGlass"></div>
+          </div>
+        </div>
+      </div>
+      <div class="logo">MAHROO</div>
+      <nav>
+        <div class="header4">
+                
+            <ul class="menu4">
+                <li><a class="active" href="index.html"><i
+                            class="fas fa-home"></i> Home</a></li>
+                <li><a href="shop.html"><i class="fas fa-shop"></i>
+                        Shop</a></li>
+                <li><a href="cart.html"><i
+                            class="fas fa-shopping-cart"></i> Cart<span
+                            id="cart-span">0</span></a></li>
+                <li><a href="care.html"><i class="fas fa-user"></i>
+                        Customer Care</a></li>
+            </ul>
+      </nav>
+    </header>
+
+    <div id="product-details" class="product-container"></div>
+
+    <footer class="section-p1">
+      <div class="cont">
+        <div class="column">
+          <h4>Contact Us</h4>
+          <p><strong>Whatsapp: </strong>+27 79 479 5961</p>
+          <p><strong>Email: </strong>mahroofashions@gmail.com</p>
+          <p><strong>Hours: </strong>10:00 - 16:00, Mon - Fri</p>
+        </div>
+        <div class="column">
+            <ul>
+                <li>
+                  <a class="facebook" href="#">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li>
+                  <a class="whatsapp" href="#">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li>
+                  <a class="instagram" href="#">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                  </a>
+                </li>
+              </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2024, Mahroo</p>
+      </div>
+    </footer>
+
+    <script src="cart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
+    <script>
+      // Initialize Contentful client
+      const client = contentful.createClient({
+        space: "ht78ljur62hr",
+        accessToken: "7JHGTqfyep0EfTv7a33h1E4nFpqoifkRsRHJC-kfta8",
+      });
+
+      function formatCurrency(price, currencyCode = "ZAR") {
+        const formatter = new Intl.NumberFormat("en-US", {
+          style: "currency",
+          currency: currencyCode,
+        });
+        let formattedPrice = formatter.format(price);
+
+        if (currencyCode === "ZAR") {
+          formattedPrice = formattedPrice.replace("ZAR", "R");
+        }
+
+        return formattedPrice;
+      }
+
+      function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+      }
+
+      const productId = getQueryParam("id");
+
+      if (productId) {
+        client
+          .getEntry(productId)
+          .then((product) => {
+            const productData = product.fields;
+            const productImageArray = productData.productImage;
+            const imagesHtml =
+              productImageArray && productImageArray.length > 0
+                ? productImageArray
+                    .map(
+                      (img) =>
+                        `<div class="slide"><img src="https:${img.fields.file.url}" alt="${productData.name}"></div>`
+                    )
+                    .join("")
+                : "<p>No images available</p>";
+            const price = formatCurrency(productData.price, "ZAR");
+            const name = productData.name || "No name available";
+            const description =
+              productData.description || "No description available";
+
+            // Generate size options HTML if sizes are available
+            const sizesHtml =
+              productData.sizes && productData.sizes.length > 0
+                ? `
+                            <label for="size-select">Size:</label>
+                            <select id="size-select">
+                                ${productData.sizes
+                                  .map(
+                                    (size) =>
+                                      `<option value="${size}">${size}</option>`
+                                  )
+                                  .join("")}
+                            </select>
+                        `
+                : "";
+
+            // Generate color options HTML if colors are available
+            const colorsHtml =
+              productData.colours && productData.colours.length > 0
+                ? `
+                            <label for="color-select">Colour:</label>
+                            <select id="color-select">
+                                ${productData.colours
+                                  .map(
+                                    (color) =>
+                                      `<option value="${color}">${color}</option>`
+                                  )
+                                  .join("")}
+                            </select>
+                        `
+                : "";
+
+            const productElement = document.createElement("div");
+            productElement.classList.add("slider-container");
+            productElement.innerHTML = `
+                        <div class="slider">
+                            <div class="slides">
+                                ${imagesHtml}
+                            </div>
+                            <button class="prev">&#10094;</button>
+                            <button class="next">&#10095;</button>
+                        </div>
+                        <div class="product-details">
+                            <h2>${name}</h2>
+                            <hr>
+                            <p>${description}</p>
+                            <p>${price}</p>
+                            ${sizesHtml}
+                            ${colorsHtml}
+                            <button class="add-to-cart" onclick="addToCart('${productId}')"><i class="fa-solid fa-cart-shopping"></i> Add To Cart</button>
+                        </div>
+                    `;
+            document
+              .getElementById("product-details")
+              .appendChild(productElement);
+
+            // Initialize slider functionality
+            let currentIndex = 0;
+            const slides = document.querySelector(".slides");
+            const totalSlides = document.querySelectorAll(".slide").length;
+
+            function showSlide(index) {
+              if (index >= totalSlides) {
+                currentIndex = 0;
+              } else if (index < 0) {
+                currentIndex = totalSlides - 1;
+              } else {
+                currentIndex = index;
+              }
+              const offset = -currentIndex * 100;
+              slides.style.transform = `translateX(${offset}%)`;
+            }
+
+            document.querySelector(".prev").addEventListener("click", () => {
+              showSlide(currentIndex - 1);
+            });
+            document.querySelector(".next").addEventListener("click", () => {
+              showSlide(currentIndex + 1);
+            });
+          })
+          .catch((err) => {
+            console.error("Error fetching product:", err);
+            document.getElementById("product-details").innerHTML =
+              "Error loading product details.";
+          });
+      } else {
+        document.getElementById("product-details").innerHTML =
+          "No product ID provided.";
+      }
+
+      function addToCart(productId) {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const sizeSelect = document.getElementById("size-select");
+        const colorSelect = document.getElementById("color-select");
+        const selectedSize = sizeSelect ? sizeSelect.value : null;
+        const selectedColor = colorSelect ? colorSelect.value : null;
+
+        // Check if the product with the same size and color is already in the cart
+        const existingProductIndex = cart.findIndex(
+          (item) =>
+            item.id === productId &&
+            item.size === selectedSize &&
+            item.colour === selectedColor
+        );
+
+        if (existingProductIndex > -1) {
+          cart[existingProductIndex].quantity += 1;
+        } else {
+          cart.push({
+            id: productId,
+            quantity: 1,
+            size: selectedSize,
+            colour: selectedColor,
+          });
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateCartCount();
+      }
+
+      function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0);
+        document.getElementById("cart-span").textContent = cartCount;
+      }
+    </script>
+    <script src="loader.js"></script>
+  </body>
+</html>
