@@ -62,7 +62,7 @@ html, body {
             
         }
 
-        /* Individual cart item */
+       
         .cart-item {
             width: 400px;
             background-color: white;
@@ -72,7 +72,7 @@ html, body {
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        /* Styling for item details */
+    
         .cart-item img {
             width: 100%;
             height: 150px;
@@ -280,11 +280,10 @@ async function renderCartItems() {
         }
         const orderDetails = generateOrderDetailsText(cartItems);
 
-    // Update hidden input fields
     document.querySelector('input[name="amount"]').value = totalPrice.toFixed(2);
     document.querySelector('input[name="item_name"]').value = orderDetails;
 
-    // Update displayed total price
+
     document.getElementById('total-price').textContent = `Total: R${totalPrice.toFixed(2)}`;
     document.getElementById(
           "final-price"
