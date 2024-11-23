@@ -778,8 +778,8 @@ h3 {
    
 // Initialize Contentful client
 const client = contentful.createClient({
-    space: 'ht78ljur62hr', // Replace with your Space ID
-    accessToken: '7JHGTqfyep0EfTv7a33h1E4nFpqoifkRsRHJC-kfta8' // Replace with your Access Token
+    space: 'ht78ljur62hr', 
+    accessToken: '7JHGTqfyep0EfTv7a33h1E4nFpqoifkRsRHJC-kfta8' 
 });
 
 function formatCurrency(price, currencyCode = 'ZAR') {
@@ -808,14 +808,13 @@ client.getEntries({ content_type: 'abaya' })
         } else {
             products.forEach(product => {
                 const productData = product.fields;
-                
-                // Debugging output
+            
                 console.log('Full product data:', product);
                 console.log('Product fields:', productData);
                 console.log('abayaImage field:', productData.productImage);
 
                 const productImageArray = productData.productImage;
-                let fullImageUrl = 'default-image-url'; // Replace with a default image URL
+                let fullImageUrl = 'default-image-url'; 
 
                 if (productImageArray && productImageArray.length > 0 && productImageArray[0].fields && productImageArray[0].fields.file) {
                     fullImageUrl = `https:${productImageArray[0].fields.file.url}`;
@@ -830,7 +829,6 @@ client.getEntries({ content_type: 'abaya' })
                 const productElement = document.createElement('div');
                 productElement.classList.add('product');
 
-                // Insert image URL into HTML
                 productElement.innerHTML = `
                     <a href="product-page.html?id=${product.sys.id}">
                       
