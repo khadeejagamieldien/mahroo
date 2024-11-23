@@ -247,8 +247,8 @@
     <script>
         // Initialize Contentful client
         const client = contentful.createClient({
-            space: 'ht78ljur62hr', // Replace with your Space ID
-            accessToken: '7JHGTqfyep0EfTv7a33h1E4nFpqoifkRsRHJC-kfta8' // Replace with your Access Token
+            space: 'ht78ljur62hr', 
+            accessToken: '7JHGTqfyep0EfTv7a33h1E4nFpqoifkRsRHJC-kfta8' 
         });
 
         function formatCurrency(price, currencyCode = 'ZAR') {
@@ -270,9 +270,9 @@
             let contentTypes = ['product'];
 
             if (category === 'abayas') {
-                contentTypes = ['abaya']; // Specify content type for 'abayas' category
+                contentTypes = ['abaya']; 
             } else if (category === 'all') {
-                contentTypes = ['product', 'abaya']; // Fetch both content types for 'all' category
+                contentTypes = ['product', 'abaya']; 
             }
 
             Promise.all(
@@ -280,7 +280,6 @@
             ).then(responses => {
                 let products = responses.flatMap(response => response.items);
 
-                // Filter by category if necessary (excluding 'all' and 'abayas' since 'abayas' is handled by content type)
                 if (category !== 'all' && category !== 'abayas') {
                     products = products.filter(product => product.fields.category && product.fields.category.toLowerCase() === category.toLowerCase());
                 }
@@ -304,25 +303,24 @@
                 } else {
                     products.forEach(product => {
                         const productData = product.fields;
-
-                        // Access the first image in the array
+ 
                         const productImageArray = productData.productImage;
                         const imageUrl = productImageArray && productImageArray.length > 0 
                             ? productImageArray[0].fields.file.url 
                             : null;
 
-                        // Full URL for image
+                      
                         const fullImageUrl = imageUrl ? `https:${imageUrl}` : null;
-                        const price = formatCurrency(productData.price, 'ZAR'); // Adjust currency code as needed
+                        const price = formatCurrency(productData.price, 'ZAR'); 
 
-                        // Safely handle missing fields
+                      
                         const name = productData.name || 'No name available';
                         const description = productData.description || 'No description available';
 
                         const productElement = document.createElement('div');
                         productElement.classList.add('product');
 
-                        // Insert image URL into HTML
+                        
                         productElement.innerHTML = `
                             <a href="product-page.html?id=${product.sys.id}"> <!-- Link to the product page -->
                                 ${fullImageUrl ? `<img src="${fullImageUrl}" alt="${name}">` : '<p>No image available</p>'}
@@ -340,7 +338,6 @@
             });
         }
 
-        // Event listeners for sorting and filtering
         document.getElementById('sort-select').addEventListener('change', (event) => {
             const sortBy = event.target.value;
             currentSort = sortBy;
