@@ -58,7 +58,6 @@ button[type="submit"] {
     margin-bottom: 20px;
 }
 
-/* Individual cart item */
 .cart-item {
     flex: 0 0 300px;
     margin-right: 30px;
@@ -66,14 +65,14 @@ button[type="submit"] {
     border-radius: 8px;
     text-align: left;
     margin-bottom: 20px;
-    padding: 10px; /* Optional: Add some padding to give space around content */
+    padding: 10px; 
 }
 
-/* Styling for item details */
+/
 .cart-item img {
     width: 100%;
     height: auto;
-    max-height: 500px; /* Restrict the height */
+    max-height: 500px; 
     object-fit: cover;
     border-radius: 4px;
     margin-bottom: 10px;
@@ -89,7 +88,7 @@ button[type="submit"] {
     font-size: 14px;
 }
 
-/* Scrollbar styling (optional) */
+
 #cart-items::-webkit-scrollbar {
     height: 8px;
 }
@@ -292,12 +291,11 @@ async function renderCartItems() {
     const shippingFeeElement = document.getElementById('shipping-fee');
     if (totalPrice < 600) {
         shippingFeeElement.style.display = 'block';
-        totalPrice += 60; // Add shipping fee to the total price
+        totalPrice += 60; 
     } else {
         shippingFeeElement.style.display = 'none';
     }
 
-    // Update hidden input fields
     document.getElementById('cart-items-hidden').value = generateOrderDetailsText(cartItems);
     document.getElementById('total-price-hidden').value = `R${totalPrice.toFixed(2)}`;
 }
