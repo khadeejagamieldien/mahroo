@@ -36,14 +36,14 @@
       .slider-container {
         display: flex;
         align-items: flex-start;
-        gap: 20px; /* Space between slider and details */
+        gap: 20px; 
         width: 75%;
         margin: 20px auto;
       }
 
       .slider {
         position: relative;
-        flex: 1; /* Slider takes up available space */
+        flex: 1; 
         overflow: hidden;
         width: 100%;
       }
@@ -71,7 +71,7 @@
         cursor: pointer;
         z-index: 1000;
         font-size: 18px;
-        margin-top: 20px; /* Space above button */
+        margin-top: 20px; 
       }
 
       .prev {
@@ -95,8 +95,8 @@
     
 
       .product-details {
-        flex: 1; /* Details take up available space */
-        max-width: 400px; /* Maximum width for details */
+        flex: 1; 
+        max-width: 400px; 
         padding: 20px;
         background: #f4f4f4;
         flex-direction: column;
@@ -132,7 +132,7 @@
 
       .add-to-cart i {
         font-size: 15px;
-        margin-right: 10px; /* Space between icon and text */
+        margin-right: 10px;
       }
 
       #size-select,
@@ -296,7 +296,6 @@
                         `
                 : "";
 
-            // Generate color options HTML if colors are available
             const colorsHtml =
               productData.colours && productData.colours.length > 0
                 ? `
@@ -336,7 +335,6 @@
               .getElementById("product-details")
               .appendChild(productElement);
 
-            // Initialize slider functionality
             let currentIndex = 0;
             const slides = document.querySelector(".slides");
             const totalSlides = document.querySelectorAll(".slide").length;
@@ -377,7 +375,6 @@
         const selectedSize = sizeSelect ? sizeSelect.value : null;
         const selectedColor = colorSelect ? colorSelect.value : null;
 
-        // Check if the product with the same size and color is already in the cart
         const existingProductIndex = cart.findIndex(
           (item) =>
             item.id === productId &&
